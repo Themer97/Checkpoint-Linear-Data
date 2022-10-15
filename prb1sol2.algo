@@ -1,0 +1,27 @@
+ALGORITHM sharedElement
+VAR
+    arr1,arr2:ARRAY_OF INTEGER[10];
+    hash:HASH_TABLE<INTEGER,INTEGER>
+    sum,i:INTEGER;
+BEGIN
+sum:=0
+    FOR i FROM 0 TO arr1.length-1  DO
+        hash.insert(<arr1[i],1>)
+    END_FOR
+    FOR i FROM 0 TO arr2.length-1  DO
+        IF (hash.lookup(arr2[i])=TRUE) THEN
+            hash.insert(<arr2[i],2>)
+        ELSE
+            hash.insert(<arr2[i],1>)
+        END_IF
+    END_FOR
+
+FOR i FROM 0 TO arr1.length-1  DO
+    IF(hash.get(arr1[i])=2) THEN
+sum:=sum + arr1[i]*2
+    END_IF
+END_FOR
+ 
+ Write(sum)
+
+END
